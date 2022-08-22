@@ -1,5 +1,4 @@
 # Metodologia_Sistemas
 Grupo 2, metodologia de sistemas
 
-Grupo 2, acá es la rama Paolo Gamarra, 
-
+Mira mi loco el secreto es esperar que todos se distraigan para instalar el DOOM en el Microondas
