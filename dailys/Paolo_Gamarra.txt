@@ -1,0 +1,7 @@
+13/09 Facundo nombró de nuevo la rama principal a master, tuve que borrar la carpeta anterior Metodología _Sistemas, clonarla nuevo y volver a crear una nueva rama para yo trabajar en ella (ramaPaoloGamarra).
+Estoy anotando todo lo necesario. 
+RECORDATORIO!!!
+* Acordarse de la daily mía
+*la issue que me toca (#7) moverla al estado "en progreso"
+*commits el comentario en inglés
+ Creo que estoy para arrancar...
