@@ -19,7 +19,7 @@ export class Passenger {
         this.identityCard = identityCard;
     }
 
-    static create(fullName: string, email: string, identityCard: string): Passenger {
+    public static create(fullName: string, email: string, identityCard: string): Passenger {
         const id = v4();
         const passenger = new Passenger(id, fullName, email, identityCard);
 
