@@ -5,3 +5,36 @@ RECORDATORIO!!!
 *la issue que me toca (#7) moverla al estado "en progreso"
 *commits el comentario en inglés
  Creo que estoy para arrancar...
+
+ 17/09/22
+ Hoy voy a crear el repositorio de la entidad "Passenger", para eso también hay que crear las carpetas con la ruta server/src/infraestructure/repositories/passenger.repository.ts. Este repositoio tendrá dos métodos "save" y "FindOneByIdentutyCard".
+ Creo la nueva rama CreatePassengerRepository, desde esa rama trabajaré. En github muevo la tarea que me tocó a "en preoceso"
+
+Puntos clave dados por Facundo en github:
+
+Definir la clase "passengerRepository".
+
+P: Declarar un atributo privado de tipo "Passenger[]", para utilizar de almacenamiento local. Pensar porque privado y no publico, y porque de tipo "Passenger[]".
+
+R: Un array de tipo "Passenger" privado por las dudas haya algún cambio.
+
+P: Declarar su constructor y pensar porque se declara al atributo como vacío.
+Si no comprende asincronismo, leer la documentación oficial de Mozilla
+
+R: Vacío porque vamos a guardar por ahora en memoria.
+
+P: Declarar un método asíncrona "save" para guardar y sobrescribir datos. Teniendo en cuenta que en typescript debemos indicar que tipo de dato devolvera o no nuestra promesa (promise).
+EJ: Promise<void> [ una promesa que no devuelve nada ]
+
+R: Me tuve que meter en las configuraciones de typescript tsconfig.json, descomentar línea 9 y 10 y agregar "lib": ["ES2015"], /* Specify library files to be included in the ....
+ 
+P: Declarar un metodo asincrono "findOneByIdentityCard" para buscar un passenger por su DNI (id card). Muy similar al "findOneById" del ejemplo dado por los profesores.
+
+R:hecho
+
+P: Por ultimo exportar por defecto una instancia de la clase.
+EJ: export default new nombreClase(); y el porque de exportarlo de dicha forma.
+
+R: Para exportar funciones, objetos o tipos de dato primitivos del módulo para que puedan ser utilizados por otros programas con la sentencia import.
+
+Una vez terminado. pushear los cambios, hacer un pull request poniendo a facu que revise y si está todo ok merge...
