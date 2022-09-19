@@ -38,3 +38,13 @@ EJ: export default new nombreClase(); y el porque de exportarlo de dicha forma.
 R: Para exportar funciones, objetos o tipos de dato primitivos del módulo para que puedan ser utilizados por otros programas con la sentencia import.
 
 Una vez terminado. pushear los cambios, hacer un pull request poniendo a facu que revise y si está todo ok merge...
+
+19/03 (PUNTOS = 8) Generar el comando para crear “passengers”#9
+Puntos claves:
+
+Entender que es un comando y cual es su finalidad. Se anexa documentacion que puede consultar.
+Definir una clase que usaremos como comando, en vez de una interface. En la misma definir aquellos atributos que necesitaremos para realizar la acción para la que esta creada. En este caso CREAR una entidad de pasajero. Tendrás que identificar cuales son necesarios para su creación.
+Definir el constructor de la clase y dentro del mismo una pequeña comprobación de si los datos que ingresan existen.
+Por ultimo definir todos los getter de cada uno de los atributos de nuestro comando.
+Exportar la clase (Importante NO POR DEFECTO).
+Se anexa una documentación oficial de importaciones de Mozilla
