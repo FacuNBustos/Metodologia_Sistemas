@@ -11,8 +11,6 @@ class PassengerRepository {
   async findOneByIdentityCard(identityCard: string): Promise<Passenger | null> {
     const passenger =this.passengers.find(p => p.getIdentityCard() === identityCard);
 
-    //return (passenger) ? passenger : null;
-
     if (passenger)
       return passenger;
     else

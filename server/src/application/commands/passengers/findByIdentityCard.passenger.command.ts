@@ -5,10 +5,10 @@ export class findByIdentityCardPassengerCommand {
   public constructor(
     identityCard: string,
   ) {
-    if (!identityCard) {
-      throw new Error('id is required');
-    }
 
+    if (!identityCard) {
+      throw new Error('Identity Card is required');
+    }
    
     this.identityCard = identityCard;
   }
