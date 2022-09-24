@@ -2,6 +2,7 @@ import { Application } from 'express';
 import CommonRoutes from "./Common.routes";
 import findByIdentityCardPassengerAction from "../actions/passengers/findByIdentityCard.passenger.action";
 import createPassengerAction from '../actions/passengers/create.passenger.action';
+import updatePassengerAction from '../actions/passengers/update.passenger.action';
 
 
 class PassengerRoutes extends CommonRoutes {
@@ -15,7 +16,7 @@ class PassengerRoutes extends CommonRoutes {
 
         this.app.post('/passengers', createPassengerAction.run);
 
-        this.app.put('/passengers/:id', ()=>{});
+        this.app.put('/passengers/:id', updatePassengerAction.run);
 
         return this.app;
     };
