@@ -26,3 +26,5 @@ class CreatePassengerCommand {
     return this.identityCard;
   }
 }
+
+export default CreatePassengerCommand
