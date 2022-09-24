@@ -1,5 +1,6 @@
-import {Request, Response} from "express";
-import {UpdatePassengerCommand} from "../../../application/commands/passengers/update.passenger.command"
+import { Request, Response } from "express";
+import { UpdatePassengerCommand } from "../../../application/commands/passengers/update.passenger.command";
+import updatePassengerHandler from '../../../application/handlers/passengers/update.passenger.handler';
 
 class UpdatePassengerAction {
   async run(req: Request, res: Response) {
@@ -13,15 +14,16 @@ class UpdatePassengerAction {
       );
 
       try {
+        
         await updatePassengerHandler.execute(command);
-      } catch (error) {
+
+      } catch ( error:any ) {
         return res.status(404).json({message: error.message});
       }
 
       return res.status(200).json({message: "Passenger updated"});
-    } catch (e) {
-      const {message} = e as Error;
-      res.status(400).json({message});
+    } catch ( error:any ) {
+      return res.status(400).json({message: error.message});
     }
   }
 }
