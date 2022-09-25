@@ -8,9 +8,9 @@ class UpdatePassengerAction {
     try {
       const command = new UpdatePassengerCommand(
         req.params.id,
-        req.body.fullname,
+        req.body.fullName,
         req.body.email,
-        req.body.identitycard
+        req.body.identityCard
       );
 
       try {

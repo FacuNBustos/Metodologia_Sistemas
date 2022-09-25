@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
 import { findByIdentityCardPassengerCommand } from "../../../application/commands/passengers/findByIdentityCard.passenger.command";
-import findOneByIdentityCardPassengerHandler from "../../../application/handlers/findOneByIdentityCard.passenger.handler";
-import { Passenger } from "../../../domain/entities/passenger.entity";
-import { Nullable } from "../../../domain/valueObjects/Nullable";
+import findByIdentityCardPassengerHandler from "../../../application/handlers/passengers/findByIdentityCard.passenger.handler";
 
 
 class FindByIdentityCardPassengerAction {
@@ -10,7 +8,7 @@ class FindByIdentityCardPassengerAction {
        try {
         const command = new findByIdentityCardPassengerCommand(req.params.idcard);
 
-        const passenger: Nullable<Passenger> = await findOneByIdentityCardPassengerHandler.execute(command);
+        const passenger = await findByIdentityCardPassengerHandler.execute(command);
 
         return res.status(200).json(passenger);
        } catch( error:any ) {

@@ -1,3 +1,4 @@
+import { findByIdentityCardPassengerCommand } from "../../application/commands/passengers/findByIdentityCard.passenger.command";
 import { Passenger } from "../../domain/entities/passenger.entity";
 
 class PassengerRepository {
@@ -8,8 +9,8 @@ class PassengerRepository {
     this.passengers = [];
   }
 
-  async findOneByIdentityCard(identityCard: string): Promise<Passenger | null> {
-    const passenger =this.passengers.find(p => p.getIdentityCard() === identityCard);
+  async findOneByIdentityCard(command: findByIdentityCardPassengerCommand): Promise<Passenger | null> {
+    const passenger = this.passengers.find(p => p.getIdentityCard() === command.getIdentityCard());
 
     if (passenger)
       return passenger;

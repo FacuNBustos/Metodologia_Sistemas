@@ -7,9 +7,9 @@ class CreatePassengerAction {
     try {
       try {
         const command = new CreatePassengerCommand(
-          req.body.fullname,
+          req.body.fullName,
           req.body.email,
-          req.body.identitycard
+          req.body.identityCard
         );
 
         await createPassengerHandler.execute(command);
