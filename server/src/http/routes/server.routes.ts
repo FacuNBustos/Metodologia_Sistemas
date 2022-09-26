@@ -9,7 +9,7 @@ class ServerRoutes extends CommonRoutes {
 
     setUpRoutes(): Application {
 
-        this.app.get("/", statusServerAction.run);
+        this.app.get("/ping", statusServerAction.run);
         
         return this.app;
     };
