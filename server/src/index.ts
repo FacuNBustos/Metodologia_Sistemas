@@ -4,6 +4,7 @@ import { log } from 'debug';
 import expressWinston from 'express-winston';
 import winston from 'winston';
 import PassengerRoutes from "./http/routes/passenger.routes";
+import ServerRoutes from "./http/routes/server.routes";
 
 const app: express.Application = express();
 
@@ -28,6 +29,7 @@ app.use(cors());
 app.use(express.json());
 
 routes.push(new PassengerRoutes(app));
+routes.push(new ServerRoutes(app));
 
 
 app.listen(3000, () => {

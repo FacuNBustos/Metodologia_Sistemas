@@ -1,3 +1,0 @@
-Martes 13 de septiembre:
-  Today I plan to make templates for the handlers classes Create, Update and FindOneById.
-  To then be able to couple it with the corresponding commands and its implementation together with the repository
