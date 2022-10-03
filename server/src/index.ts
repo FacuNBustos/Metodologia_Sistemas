@@ -5,6 +5,7 @@ import expressWinston from 'express-winston';
 import winston from 'winston';
 import PassengerRoutes from "./http/routes/passenger.routes";
 import BookingRoutes from "./http/routes/booking.routes";
+import Seeder from "./infraestructure/seeder/accommodation.seeder";
 
 const app: express.Application = express();
 
@@ -21,7 +22,7 @@ if (!process.env.DEBUG) {
     loggerOptions.meta = false;
 }
 
-//new Seeder().generate(); Para generar instancias automaticas
+new Seeder().generate()
 
 app.use(expressWinston.logger(loggerOptions));
 
