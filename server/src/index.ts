@@ -3,8 +3,11 @@ import cors from 'cors';
 import { log } from 'debug';
 import expressWinston from 'express-winston';
 import winston from 'winston';
-import PassengerRoutes from "./http/routes/passenger.routes"; 
 import AccommodationRoutes from "./http/routes/accommodation.routes";
+import PassengerRoutes from "./http/routes/passenger.routes";
+import BookingRoutes from "./http/routes/booking.routes";
+import Seeder from "./infraestructure/seeder/accommodation.seeder";
+
 
 const app: express.Application = express();
 
@@ -21,6 +24,8 @@ if (!process.env.DEBUG) {
     loggerOptions.meta = false;
 }
 
+new Seeder().generate()
+
 app.use(expressWinston.logger(loggerOptions));
 
 const routes: Array<any> = [];
@@ -30,6 +35,7 @@ app.use(express.json());
 
 routes.push(new PassengerRoutes(app));
 routes.push(new AccommodationRoutes(app));
+routes.push(new BookingRoutes(app));
 
 app.listen(3000, () => {
   routes.forEach((route: any) => {
