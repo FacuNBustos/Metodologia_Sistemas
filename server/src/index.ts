@@ -4,6 +4,7 @@ import { log } from 'debug';
 import expressWinston from 'express-winston';
 import winston from 'winston';
 import PassengerRoutes from "./http/routes/passenger.routes";
+import BookingRoutes from "./http/routes/booking.routes";
 
 const app: express.Application = express();
 
@@ -20,6 +21,8 @@ if (!process.env.DEBUG) {
     loggerOptions.meta = false;
 }
 
+//new Seeder().generate(); Para generar instancias automaticas
+
 app.use(expressWinston.logger(loggerOptions));
 
 const routes: Array<any> = [];
@@ -28,7 +31,9 @@ app.use(cors());
 app.use(express.json());
 
 routes.push(new PassengerRoutes(app));
+routes.push(new BookingRoutes(app));
 
+console.log(app);
 
 app.listen(3000, () => {
   routes.forEach((route: any) => {
