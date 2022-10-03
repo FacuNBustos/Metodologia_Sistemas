@@ -4,6 +4,7 @@ import { log } from 'debug';
 import expressWinston from 'express-winston';
 import winston from 'winston';
 import PassengerRoutes from "./http/routes/passenger.routes";
+import Seeder from "./infraestructure/seeder/accommodation.seeder";
 
 const app: express.Application = express();
 
@@ -19,6 +20,8 @@ const loggerOptions: expressWinston.LoggerOptions = {
 if (!process.env.DEBUG) {
     loggerOptions.meta = false;
 }
+
+new Seeder().generate()
 
 app.use(expressWinston.logger(loggerOptions));
 
