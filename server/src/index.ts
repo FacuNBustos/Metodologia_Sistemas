@@ -3,9 +3,11 @@ import cors from 'cors';
 import { log } from 'debug';
 import expressWinston from 'express-winston';
 import winston from 'winston';
+import AccommodationRoutes from "./http/routes/accommodation.routes";
 import PassengerRoutes from "./http/routes/passenger.routes";
 import BookingRoutes from "./http/routes/booking.routes";
 import Seeder from "./infraestructure/seeder/accommodation.seeder";
+
 
 const app: express.Application = express();
 
@@ -32,9 +34,8 @@ app.use(cors());
 app.use(express.json());
 
 routes.push(new PassengerRoutes(app));
+routes.push(new AccommodationRoutes(app));
 routes.push(new BookingRoutes(app));
-
-console.log(app);
 
 app.listen(3000, () => {
   routes.forEach((route: any) => {
