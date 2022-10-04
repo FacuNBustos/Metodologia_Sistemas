@@ -1,15 +1,10 @@
 
-
-export class findByIdPassengerCommand {
+export class findByIdBookingCommand {
     private readonly id: string;
   
     public constructor(
       id: string,
     ) {
-  
-      if (!id) {
-        throw new Error('Id is required');
-      }
      
       this.id = id;
     }
