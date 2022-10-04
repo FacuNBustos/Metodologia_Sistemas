@@ -1,3 +1,4 @@
+import { findByIdPassengerCommand } from "../../application/commands/passengers/findById.passenger.command";
 import { findByIdentityCardPassengerCommand } from "../../application/commands/passengers/findByIdentityCard.passenger.command";
 import { Passenger } from "../../domain/entities/passenger.entity";
 
@@ -7,19 +8,28 @@ class PassengerRepository {
 
   constructor() {
     this.passengers = [];
-  }
+  };
 
   async findOneByIdentityCard(command: findByIdentityCardPassengerCommand): Promise<Passenger | null> {
-    const passenger = this.passengers.find(p => p.getIdentityCard() === command.getIdentityCard());
+    const passenger = this.passengers.find(function(p) {
+      return p.getIdentityCard() === command.getIdentityCard();
+    });
 
-    if (passenger)
-      return passenger;
-    else
-      return null;
-  }
+    return (passenger)? passenger : null;
+  };
+
+  async findOneById(command: findByIdPassengerCommand): Promise<Passenger | null> {
+    const passenger = this.passengers.find(function(p) {
+      return p.getId() === command.getId();
+    });
+
+    return (passenger) ? passenger : null;
+  };
 
   async save(passenger: Passenger): Promise<void> {
-    const savedPassenger = this.passengers.find((p => p.getId() === passenger.getId()));
+    const savedPassenger = this.passengers.find(function(p) {
+      return p.getId() === passenger.getId();
+    });
 
     if (savedPassenger) {
       this.passengers.splice(this.passengers.indexOf(savedPassenger), 1);

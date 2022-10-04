@@ -7,6 +7,7 @@ import AccommodationRoutes from "./http/routes/accommodation.routes";
 import PassengerRoutes from "./http/routes/passenger.routes";
 import BookingRoutes from "./http/routes/booking.routes";
 import Seeder from "./infraestructure/seeder/accommodation.seeder";
+import CommonRoutes from "./http/routes/Common.routes";
 
 
 const app: express.Application = express();
@@ -22,13 +23,13 @@ const loggerOptions: expressWinston.LoggerOptions = {
 
 if (!process.env.DEBUG) {
     loggerOptions.meta = false;
-}
+};
 
-new Seeder().generate()
+new Seeder().generate();
 
 app.use(expressWinston.logger(loggerOptions));
 
-const routes: Array<any> = [];
+const routes: Array<CommonRoutes> = [];
 
 app.use(cors());
 app.use(express.json());
@@ -38,7 +39,7 @@ routes.push(new AccommodationRoutes(app));
 routes.push(new BookingRoutes(app));
 
 app.listen(3000, () => {
-  routes.forEach((route: any) => {
+  routes.forEach((route: CommonRoutes) => {
     log(`Routes configured for ${route.getName()}`);
   });
   log('Server listening on port 3000');
