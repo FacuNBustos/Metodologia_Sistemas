@@ -4,7 +4,7 @@ import CommonRoutes from "./Common.routes";
 
 class AccommodationRoutes extends CommonRoutes {
     constructor(app: Application){
-        super(app, 'Passenger');
+        super(app, 'Accommodation');
     };
 
     setUpRoutes(): Application {
