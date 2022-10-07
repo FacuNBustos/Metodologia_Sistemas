@@ -6,10 +6,10 @@ export class Accommodation {
   private name: string;
   private pricePerNight: number;
 
-  constructor(id: string, name: string, pricePerNigth: number) {
+  constructor(id: string, name: string, pricePerNight: number) {
     this.id = id;
     this.name = name;
-    this.pricePerNight = pricePerNigth;
+    this.pricePerNight = pricePerNight;
   }
 
   public static create(name: string, pricePerNight: number): Accommodation {
@@ -37,7 +37,7 @@ export class Accommodation {
     return this.name;
   }
 
-  getPriceperNigth(): number {
+  getPricePerNight(): number {
     return this.pricePerNight;
   }
 
