@@ -48,3 +48,17 @@ Definir el constructor de la clase y dentro del mismo una pequeña comprobación
 Por ultimo definir todos los getter de cada uno de los atributos de nuestro comando.
 Exportar la clase (Importante NO POR DEFECTO).
 Se anexa una documentación oficial de importaciones de Mozilla
+
+07/10/2022 SPRINT 2. #30 Accommodation Entity y #31 Accommodation Repository
+Se parte creando una nueva rama para cada tarea. Releer el print 1 para los pasos
+
+Accommodation Entity:
+Atributos:
+  id (string)
+  name (string)
+  pricePerNight: (number)
+
+Accommodation Repository
+  Debe tener el método “save”
+  Debe tener el método “findOneById”
+  Debe tener el método “findOneByName”
