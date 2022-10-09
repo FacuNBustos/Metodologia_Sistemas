@@ -61,4 +61,4 @@ Atributos:
 Accommodation Repository
   Debe tener el método “save”
   Debe tener el método “findOneById”
-  Debe tener el método “findOneByName”
+  Debe tener el método “findOneByName” (like all o includes)
