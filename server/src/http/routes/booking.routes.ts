@@ -1,5 +1,6 @@
 import { Application } from 'express';
 import CommonRoutes from "./Common.routes";
+import createBookingAction from '../actions/bookings/create.booking.action';
 
 
 class BookingRoutes extends CommonRoutes {
@@ -8,6 +9,7 @@ class BookingRoutes extends CommonRoutes {
     };
 
     setUpRoutes(): Application {
+        this.app.post('/bookings', createBookingAction.run);
 
         return this.app;
     };
