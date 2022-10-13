@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { UpdateBookingStatusCommand } from "../../../application/commands/bookings/update.bookingStatus.command";
-import updateBookingStatusHandler from '../../../application/handlers/booking/update.bookingStatus.handler';
+import updateBookingStatusHandler from "../../../application/handlers/bookings/update.bookingStatus.handler";
 
 class UpdateBookingStatusAction {
   async run(req: Request, res: Response) {
