@@ -12,7 +12,7 @@ class CreateAccommodationCommand {
     this.pricePerNight = pricePerNight;
   }
 
-  getname() : string {
+  getName() : string {
     return this.name;
   }
 
