@@ -62,3 +62,6 @@ Accommodation Repository
   Debe tener el método “save”
   Debe tener el método “findOneById”
   Debe tener el método “findOneByName” (like all o includes)
+
+12/10/2022
+Hoy hice unas correcciones en tsconfig.json y accommodation.repository. Tuve que crear un comando nuevo server/src/infraestructure/repositories/accommodation.repository.ts porque en el repositorio me saltaban errores. Me queda esperar que Rubén haga el comando findOneByNameAccommodationcommand
