@@ -1,4 +1,6 @@
 import { Accommodation } from "../../domain/entities/accommodation.entity";
+import { findOneByIdAccommodationCommand } from "../../application/commands/accommodations/findOneById.accommodation.command";
+import { findOneByNameAccommodationCommand } from "../../application/commands/accommodations/findOneByName.accommodation.command";
 
 class AccommodationRepository {
   
@@ -20,7 +22,7 @@ class AccommodationRepository {
     this.accommodations.push(accommodation);
   }
 
-  async findOneById(command: findByIdAccommodationCommand): Promise<Accommodation | null> {
+  async findOneById(command: findOneByIdAccommodationCommand): Promise<Accommodation | null> {
     const accommodation = this.accommodations.find(function(a) {
       return a.getId() === command.getId();
     });

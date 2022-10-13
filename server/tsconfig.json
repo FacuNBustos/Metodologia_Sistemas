@@ -16,7 +16,7 @@
     "outDir": "./dist",
     "lib": [
       "es6",
-      "es2018.asyncgenerator",
+      "ES2018.AsyncGenerator",
       "ES2016.Array.Include"
     ]
   },
