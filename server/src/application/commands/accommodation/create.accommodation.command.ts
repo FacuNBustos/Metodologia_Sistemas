@@ -16,7 +16,7 @@ class CreateAccommodationCommand {
     return this.name;
   }
 
-  getPricePerNight() : number {
+  getpricePerNight() : number {
     return this.pricePerNight;
   }
 }
