@@ -1,5 +1,5 @@
 import accommodationRepository from '../../../infraestructure/repositories/accommodation.repository';
-import { findOneByNameAccommodationCommand } from '../../commands/accommodation/findOneByName.accommodation.command';
+import { findOneByNameAccommodationCommand } from '../../commands/accommodations/findOneByName.accommodation.command';
 
 
 export default new class findOneByNameAccommodationHandler {

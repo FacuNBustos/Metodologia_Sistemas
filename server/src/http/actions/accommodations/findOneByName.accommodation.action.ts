@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { findOneByNameAccommodationCommand } from "../../../application/commands/accommodation/findOneByName.accommodation.command";
-import findOneByNameAccommodationHandler from "../../../application/handlers/accommodation/findOneByName.accommodation.handler";
+import { findOneByNameAccommodationCommand } from "../../../application/commands/accommodations/findOneByName.accommodation.command";
+import findOneByNameAccommodationHandler from "../../../application/handlers/accommodations/findOneByName.accommodation.handler";
 
 class findOneByNameAccommodationAction {
     async run(req: Request, res: Response){

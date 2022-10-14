@@ -1,12 +1,13 @@
 import { v4 } from "uuid";
 import { BOOKING_STATES } from "../enum/Enum.state";
+import { Accommodation } from "./accommodation.entity";
 import { Passenger } from "./passenger.entity";
 
 export class Booking {
     private id: string;
     private owner: Passenger;
     private passengers: Passenger[];
-    private accommodation: null;
+    private accommodation: Accommodation;
     private from: Date;
     private to: Date;
     private status: string;
@@ -15,7 +16,7 @@ export class Booking {
         id: string,
         owner: Passenger,
         passengers: Passenger[],
-        accommodation: null,
+        accommodation: Accommodation,
         from: Date,
         to: Date,
         status: string
@@ -29,7 +30,7 @@ export class Booking {
         this.status = status;
     };
 
-    public static create(owner: Passenger, passengers: Passenger[], accommodation: null, from: Date, to: Date) {
+    public static create(owner: Passenger, passengers: Passenger[], accommodation: Accommodation, from: Date, to: Date) {
 
         if (!passengers.includes(owner)) {
             throw new Error("the owner is not included in the passengers");
@@ -95,7 +96,7 @@ export class Booking {
         return this.passengers;
     };
 
-    getAccommodation(): null {
+    getAccommodation(): Accommodation {
         return this.accommodation;
     };
 

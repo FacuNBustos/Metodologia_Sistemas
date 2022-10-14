@@ -1,7 +1,7 @@
 import { Application } from 'express';
-import createAccommodationAction from '../actions/accommodation/create.accommodation.action';
+import createAccommodationAction from '../actions/accommodations/create.accommodation.action';
 import CommonRoutes from "./Common.routes";
-import findOneByNameAccommodationAction from '../actions/accommodation/findOneByName.accommodation.action';
+import findOneByNameAccommodationAction from '../actions/accommodations/findOneByName.accommodation.action';
 
 class AccommodationRoutes extends CommonRoutes {
     constructor(app: Application){
