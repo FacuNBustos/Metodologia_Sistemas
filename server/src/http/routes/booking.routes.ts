@@ -1,5 +1,5 @@
 import { Application } from 'express';
-import updateBookingStatusAction from '../actions/booking/update.bookingStatus.action';
+import updateBookingStatusAction from '../actions/bookings/update.bookingStatus.action';
 import CommonRoutes from "./Common.routes";
 import createBookingAction from '../actions/bookings/create.booking.action';
 import findByPassengerAndDateBookingAction from '../actions/bookings/findByPassengerAndDate.booking.action';
@@ -15,7 +15,7 @@ class BookingRoutes extends CommonRoutes {
 
         this.app.get('/bookings/:passengers, from', findByPassengerAndDateBookingAction.run);
 
-        this.app.put('/booking/:status', updateBookingStatusAction.run);
+        this.app.put('/bookings/:status', updateBookingStatusAction.run);
 
         return this.app;
     };
