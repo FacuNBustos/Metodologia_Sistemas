@@ -12,9 +12,7 @@ class PassengerRoutes extends CommonRoutes {
 
     setUpRoutes(): Application {
 
-        this.app.get('/passengers/:idcard', findByIdentityCardPassengerAction.run);
-
-        this.app.get('/passengers>/:id', () => {});
+        this.app.get('/passengers', findByIdentityCardPassengerAction.run);
 
         this.app.post('/passengers', createPassengerAction.run);
 

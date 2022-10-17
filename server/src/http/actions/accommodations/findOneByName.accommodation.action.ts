@@ -5,7 +5,7 @@ import findOneByNameAccommodationHandler from "../../../application/handlers/acc
 class findOneByNameAccommodationAction {
     async run(req: Request, res: Response){
        try {
-        const command = new findOneByNameAccommodationCommand(req.params.name);
+        const command = new findOneByNameAccommodationCommand(req.query.name);
 
         const accommodation = await findOneByNameAccommodationHandler.execute(command);
 

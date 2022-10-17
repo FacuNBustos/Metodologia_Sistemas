@@ -6,7 +6,7 @@ import findByIdentityCardPassengerHandler from "../../../application/handlers/pa
 class FindByIdentityCardPassengerAction {
     async run(req: Request, res: Response){
        try {
-        const command = new findByIdentityCardPassengerCommand(req.params.idcard);
+        const command = new findByIdentityCardPassengerCommand(req.query.idcard);
 
         const passenger = await findByIdentityCardPassengerHandler.execute(command);
 
