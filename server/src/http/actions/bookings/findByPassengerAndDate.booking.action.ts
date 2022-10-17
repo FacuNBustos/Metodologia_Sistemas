@@ -6,7 +6,7 @@ import findByPassengerAndDateBookingHandler from "../../../application/handlers/
 class findByPassengerAndDateBookingAction {
     async run(req: Request, res: Response){
        try {
-        const command = new findByNameAndFromDateBookingCommand(req.params.name, req.params.date);
+        const command = new findByNameAndFromDateBookingCommand(req.params.name, new Date(req.params.date));
 
         const booking = await findByPassengerAndDateBookingHandler.execute(command);
 

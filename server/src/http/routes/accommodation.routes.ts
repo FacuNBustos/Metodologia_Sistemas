@@ -11,11 +11,11 @@ class AccommodationRoutes extends CommonRoutes {
 
     setUpRoutes(): Application {
 
-        this.app.post('/accommodation', createAccommodationAction.run);
+        this.app.post('/accommodations', createAccommodationAction.run);
 
-        this.app.get('/accommodation/:name', findOneByNameAccommodationAction.run);
+        this.app.get('/accommodations/:name', findOneByNameAccommodationAction.run);
 
-        this.app.put('/accomodation/:id', updateAccommodationAction.run);
+        this.app.put('/accommodations/:id', updateAccommodationAction.run);
 
         return this.app;
     };
