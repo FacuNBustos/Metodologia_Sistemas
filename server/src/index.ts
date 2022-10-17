@@ -24,7 +24,9 @@ if (!process.env.DEBUG) {
     loggerOptions.meta = false;
 };
 
-new Seeder().generate();
+const seeder: Seeder = new Seeder();
+seeder.builder();
+seeder.generate();
 
 app.use(expressWinston.logger(loggerOptions));
 
