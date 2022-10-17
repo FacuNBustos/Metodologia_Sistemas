@@ -8,6 +8,7 @@ import PassengerRoutes from "./http/routes/passenger.routes";
 import BookingRoutes from "./http/routes/booking.routes";
 import Seeder from "./infraestructure/seeder/accommodation.seeder";
 import CommonRoutes from "./http/routes/Common.routes";
+import Seeder from "./infraestructure/seeder/accommodation.seeder";
 
 
 const app: express.Application = express();
