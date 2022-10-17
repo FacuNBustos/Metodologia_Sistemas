@@ -2,6 +2,7 @@ import { Application } from 'express';
 import updateBookingStatusAction from '../actions/booking/update.bookingStatus.action';
 import CommonRoutes from "./Common.routes";
 import createBookingAction from '../actions/bookings/create.booking.action';
+import findByPassengerAndDateBookingAction from '../actions/bookings/findByPassengerAndDate.booking.action';
 
 
 class BookingRoutes extends CommonRoutes {
@@ -11,6 +12,8 @@ class BookingRoutes extends CommonRoutes {
 
     setUpRoutes(): Application {
         this.app.post('/bookings', createBookingAction.run);
+
+        this.app.get('/bookings/:passengers, from', findByPassengerAndDateBookingAction.run);
 
         this.app.put('/booking/:status', updateBookingStatusAction.run);
 
