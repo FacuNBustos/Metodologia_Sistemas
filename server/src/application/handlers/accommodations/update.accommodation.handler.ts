@@ -6,6 +6,7 @@ import accommodationRepository from "../../../infraestructure/repositories/accom
 class UpdateAccommodationHandler {
     async execute(command: UpdateAccommodationCommand) {
       const accommodation = Accommodation.fromPrimitives({
+        id: command.getId(),
         name: command.getName(),
         pricePerNight: command.getPricePerNight(),
       });

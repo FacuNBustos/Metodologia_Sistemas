@@ -8,7 +8,8 @@ class UpdateAccommodationAction {
   
       try {
         const command = new UpdateAccommodationCommand(
-          req.params.name,
+          req.params.id,
+          req.body.name,
           req.body.pricePerNight,
         );
   
