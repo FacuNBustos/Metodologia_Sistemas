@@ -1,12 +1,19 @@
+import Joi, { valid } from "joi";
+
 class CreateAccommodationCommand {
   private readonly name: string;
   private readonly pricePerNight: number;
 
   constructor(name: string, pricePerNight: number) {
-    
-    if (!name || !pricePerNight) {
-      throw new Error('name and price per night are required');
-    }
+    const validObject = Joi.object({ 
+      name: Joi.string().alphanum().min(3).max(50).required(),
+      pricePerNight: Joi.number().min(0).required()
+    });
+
+    validObject.validate({
+      name: name,
+      pricePerNight: pricePerNight
+    });
 
     this.name = name;
     this.pricePerNight = pricePerNight;
