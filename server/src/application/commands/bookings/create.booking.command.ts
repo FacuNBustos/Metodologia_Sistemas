@@ -1,17 +1,15 @@
-import { Passenger } from "../../../domain/entities/passenger.entity";
-import { Accommodation } from "../../../domain/entities/accommodation.entity";
 
 export class CreateBookingCommand {
-    private readonly owner: Passenger;
-    private readonly passengers: Passenger[];
-    private readonly accommodation: Accommodation;
+    private readonly owner: string;
+    private readonly passengers: string[];
+    private readonly accommodation: string;
     private readonly from: Date;
     private readonly to: Date;
 
     constructor(
-        owner: Passenger,
-        passengers: Passenger[],
-        accommodation: Accommodation,
+        owner: string,
+        passengers: string[],
+        accommodation: string,
         from: string,
         to: string
     ) {
@@ -51,15 +49,15 @@ export class CreateBookingCommand {
         this.to = new Date(to);
     }
 
-    getOwner(): Passenger {
+    getOwner(): string {
         return this.owner;
     }
 
-    getPassengers(): Passenger[] {
+    getPassengers(): string[] {
         return this.passengers;
     }
 
-    getAccommodation(): Accommodation {
+    getAccommodation(): string {
         return this.accommodation;
     }
 
