@@ -15,12 +15,25 @@ export class CreateBookingCommand {
         to: string
     ) {
         const validObject = Joi.object({
-            owner: Joi.string().min(3).max(50).alphanum().required(),
-            passengers: Joi.array().required(),
-            accommodation: Joi.string().min(3).max(50).required(),
+            owner: Joi.string().uuid().required(),
+            passengers: Joi.string().uuid().required(),
+            accommodation: Joi.string().uuid().required(),
             from: Joi.string().required(),
             to: Joi.string().required()
-        })
+        });
+
+        validObject.validate({
+            owner: owner,
+            accommodation: accommodation,
+            from: from,
+            to: to
+        });
+        passengers.map((passenger) => {
+            validObject.validate({
+                passengers: passenger
+            })
+        });
+        if (!passengers.includes(owner)) throw new Error("owner is not include into passengers");
 
         const dateDifference = (new Date(to).getTime() - new Date(from).getTime()) / (1000 * 3600 * 24);
         if (dateDifference >= 1) {
