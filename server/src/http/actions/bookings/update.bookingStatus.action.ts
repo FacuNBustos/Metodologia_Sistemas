@@ -7,7 +7,6 @@ class UpdateBookingStatusAction {
 
     try {
       const command = new UpdateBookingStatusCommand(
-        
         req.body.status
       );
 

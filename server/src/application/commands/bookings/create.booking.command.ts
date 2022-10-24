@@ -12,8 +12,8 @@ export class CreateBookingCommand {
         owner: Passenger,
         passengers: Passenger[],
         accommodation: Accommodation,
-        from: Date,
-        to: Date
+        from: string,
+        to: string
     ) {
         if (!owner) {
             throw new Error("Must provide an owner");
@@ -39,7 +39,7 @@ export class CreateBookingCommand {
             throw new Error("Owner must be included among the passengers");
         }
 
-        const dateDifference = (to.getTime() - from.getTime()) / (1000 * 3600 * 24);
+        const dateDifference = (new Date(to).getTime() - new Date(from).getTime()) / (1000 * 3600 * 24);
         if (dateDifference >= 1) {
             throw new Error("Invalid date range");
         };
@@ -47,8 +47,8 @@ export class CreateBookingCommand {
         this.owner = owner;
         this.passengers = passengers;
         this.accommodation = accommodation;
-        this.from = from;
-        this.to = to;
+        this.from = new Date(from);
+        this.to = new Date(to);
     }
 
     getOwner(): Passenger {
