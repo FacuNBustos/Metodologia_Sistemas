@@ -1,23 +1,24 @@
+import Joi, { string } from "joi";
 
 export class findOneByNameAccommodationCommand {
-    private readonly name: any;
+    private readonly name: string;
   
     public constructor(
-      name: any,
+      name: string
     ) {
   
-      if (!name) {
-        throw new Error('Name is required');
-      }
+      const validName = Joi.object({
+        name: Joi.string().min(3).alphanum().required()
+      })
 
-      if (typeof name !== "string") {
-        throw new Error("name param must be string");
-      }
+      validName.validate({
+        name: name
+      })
      
       this.name = name;
     }
   
-    getName() {
+    getName(): string {
       return this.name;
     }
   }

@@ -1,4 +1,5 @@
-import uuidValidate from "uuid-validate";
+import Joi from "joi";
+
 export class UpdateAccommodationCommand {
     private readonly id: string;
     private readonly name: string;
@@ -8,18 +9,19 @@ export class UpdateAccommodationCommand {
         id:string,
         name: string,
         pricePerNight: number,
-        
     ) {
-        if (!uuidValidate(id)) {
-            throw new Error("ID must be a valid UUID");
-        }
-        if (!(name)) {
-            throw new Error("it must be a valid name");
-        }
+        const validObject = Joi.object({
+            id: Joi.string().uuid().required(),
+            name: Joi.string().alphanum().min(3).max(50).required(),
+            pricePerNight: Joi.number().min(0).required()
+        })
+        
+        validObject.validate({
+            id: id,
+            name: name,
+            pricePerNight:pricePerNight
+        })
 
-        if(!pricePerNight) {
-            throw new Error("Must provide an price per night");
-        }
         this.id=id;
         this.name=name;
         this.pricePerNight=pricePerNight;
