@@ -1,13 +1,23 @@
+import Joi from "joi";
+
 class CreatePassengerCommand {
   private readonly fullName: string;
   private readonly email: string;
   private readonly identityCard: string; 
 
   constructor(fullName: string, email: string, identityCard: string) {
-    
-    if (!fullName || !email || !identityCard) {
-      throw new Error('FullName, Email and Identity Card are required');
-    }
+
+    const validObject = Joi.object({
+      fullName: Joi.string().min(3).max(50).alphanum().required(),
+      email: Joi.string().email().required(),
+      identityCard: Joi.string().max(15).required()
+    });
+
+    validObject.validate({
+      fullName: fullName,
+      email: email,
+      identityCard: identityCard
+    });
 
     this.fullName = fullName;
     this.email = email;

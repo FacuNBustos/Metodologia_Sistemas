@@ -1,4 +1,4 @@
-
+import Joi from "joi";
 
 export class findByIdPassengerCommand {
     private readonly id: string;
@@ -6,10 +6,9 @@ export class findByIdPassengerCommand {
     public constructor(
       id: string,
     ) {
-  
-      if (!id) {
-        throw new Error('Id is required');
-      }
+      const validId = Joi.string().uuid().required();
+
+      validId.validate(id);
      
       this.id = id;
     }
