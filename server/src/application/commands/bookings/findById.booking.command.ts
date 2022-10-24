@@ -1,3 +1,4 @@
+import Joi from "joi";
 
 export class findByIdBookingCommand {
     private readonly id: string;
@@ -5,7 +6,8 @@ export class findByIdBookingCommand {
     public constructor(
       id: string,
     ) {
-     
+     const validId = Joi.string().uuid().required();
+     validId.validate(id);
       this.id = id;
     }
   
