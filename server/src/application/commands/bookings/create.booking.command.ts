@@ -1,3 +1,4 @@
+import Joi from "joi";
 
 export class CreateBookingCommand {
     private readonly owner: string;
@@ -13,29 +14,13 @@ export class CreateBookingCommand {
         from: string,
         to: string
     ) {
-        if (!owner) {
-            throw new Error("Must provide an owner");
-        }
-
-        if (!passengers) {
-            throw new Error("Must provide passengers");
-        }
-
-        if (!accommodation) {
-            throw new Error("Must provide an accommodation");
-        }
-
-        if (!from) {
-            throw new Error("Must provide a 'from' date");
-        }
-
-        if (!to) {
-            throw new Error("Must provide a 'to' date");
-        }
-
-        if (!passengers.includes(owner)) {
-            throw new Error("Owner must be included among the passengers");
-        }
+        const validObject = Joi.object({
+            owner: Joi.string().min(3).max(50).alphanum().required(),
+            passengers: Joi.array().required(),
+            accommodation: Joi.string().min(3).max(50).required(),
+            from: Joi.string().required(),
+            to: Joi.string().required()
+        })
 
         const dateDifference = (new Date(to).getTime() - new Date(from).getTime()) / (1000 * 3600 * 24);
         if (dateDifference >= 1) {
