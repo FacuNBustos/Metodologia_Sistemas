@@ -9,7 +9,8 @@ export class findByIdentityCardPassengerCommand {
 
     const validIdentityCard = Joi.string().max(15).required();
     
-    validIdentityCard.validate(identityCard);
+    const error = validIdentityCard.validate(identityCard).error;
+    if (error) throw new Error(error.message);
 
     this.identityCard = identityCard;
   }

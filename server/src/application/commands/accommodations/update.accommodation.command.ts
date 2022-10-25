@@ -16,11 +16,12 @@ export class UpdateAccommodationCommand {
             pricePerNight: Joi.number().min(0).required()
         })
         
-        validObject.validate({
+        const error = validObject.validate({
             id: id,
             name: name,
             pricePerNight:pricePerNight
-        })
+        }).error;
+        if (error) throw new Error(error.message);
 
         this.id=id;
         this.name=name;

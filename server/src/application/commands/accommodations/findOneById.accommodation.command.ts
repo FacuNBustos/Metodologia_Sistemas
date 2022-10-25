@@ -7,7 +7,8 @@ export class findOneByIdAccommodationCommand {
     
     const validId = Joi.string().uuid().required();
 
-    validId.validate(id);
+    const error = validId.validate(id).error;
+    if (error) throw new Error(error.message);
    
     this.id = id;
   }

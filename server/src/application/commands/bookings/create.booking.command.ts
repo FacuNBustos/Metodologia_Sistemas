@@ -22,17 +22,22 @@ export class CreateBookingCommand {
             to: Joi.string().required()
         });
 
-        validObject.validate({
+        const error = validObject.validate({
             owner: owner,
             accommodation: accommodation,
             from: from,
             to: to
-        });
+        }).error;
+        if (error) throw new Error(error.message);
+
+
         passengers.map((passenger) => {
-            validObject.validate({
+            const error = validObject.validate({
                 passengers: passenger
-            })
+            }).error;
+            if (error) throw new Error(error.message);
         });
+        
         if (!passengers.includes(owner)) throw new Error("owner is not include into passengers");
 
         const dateDifference = (new Date(to).getTime() - new Date(from).getTime()) / (1000 * 3600 * 24);

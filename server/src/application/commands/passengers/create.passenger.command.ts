@@ -13,11 +13,12 @@ class CreatePassengerCommand {
       identityCard: Joi.string().max(15).required()
     });
 
-    validObject.validate({
+    const error = validObject.validate({
       fullName: fullName,
       email: email,
       identityCard: identityCard
-    });
+    }).error;
+    if (error) throw new Error(error.message);
 
     this.fullName = fullName;
     this.email = email;

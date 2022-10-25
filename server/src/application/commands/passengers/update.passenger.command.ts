@@ -21,12 +21,13 @@ export class UpdatePassengerCommand {
             identityCard: Joi.string().max(15).required()
         })
         
-        validObject.validate({
+        const error = validObject.validate({
             id: id,
             fullName: fullName,
             email: email,
             identityCard: identityCard
-        })
+        }).error;
+        if (error) throw new Error(error.message);
 
         this.id = id;
         this.fullName = fullName;

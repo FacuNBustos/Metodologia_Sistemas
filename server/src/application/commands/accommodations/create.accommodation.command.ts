@@ -10,10 +10,11 @@ class CreateAccommodationCommand {
       pricePerNight: Joi.number().min(0).required()
     });
 
-    validObject.validate({
+    const error = validObject.validate({
       name: name,
       pricePerNight: pricePerNight
-    });
+    }).error;
+    if (error) throw new Error(error.message);
 
     this.name = name;
     this.pricePerNight = pricePerNight;
