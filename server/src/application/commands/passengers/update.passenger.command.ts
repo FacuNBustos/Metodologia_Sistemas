@@ -1,3 +1,5 @@
+import Joi from "joi";
+import validate from "uuid-validate";
 import uuidValidate from "uuid-validate";
 
 export class UpdatePassengerCommand {
@@ -12,21 +14,19 @@ export class UpdatePassengerCommand {
         email: string,
         identityCard: string,
     ) {
-        if (!uuidValidate(id)) {
-            throw new Error("ID must be a valid UUID");
-        }
+        const validObject = Joi.object({
+            id: Joi.string().uuid().required(),
+            fullName: Joi.string().min(3).max(50).alphanum().required(),
+            email: Joi.string().email().required(),
+            identityCard: Joi.string().max(15).required()
+        })
         
-        if (!fullName) {
-            throw new Error("Must provide a full name");
-        }
-        
-        if (!email) {
-            throw new Error("Must provide an email");
-        }
-
-        if(!identityCard) {
-            throw new Error("Must provide an identity card");
-        }
+        validObject.validate({
+            id: id,
+            fullName: fullName,
+            email: email,
+            identityCard: identityCard
+        })
 
         this.id = id;
         this.fullName = fullName;

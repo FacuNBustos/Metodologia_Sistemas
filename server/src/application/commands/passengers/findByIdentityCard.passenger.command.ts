@@ -1,19 +1,16 @@
+import Joi from "joi";
 
 export class findByIdentityCardPassengerCommand {
-  private readonly identityCard: any;
+  private readonly identityCard: string;
 
   public constructor(
-    identityCard: any,
+    identityCard: string,
   ) {
 
-    if (!identityCard) {
-      throw new Error('Identity Card is required');
-    }
+    const validIdentityCard = Joi.string().max(15).required();
+    
+    validIdentityCard.validate(identityCard);
 
-    if (typeof identityCard !== "string") {
-      throw new Error('idcard param must be string');
-    }
-   
     this.identityCard = identityCard;
   }
 
