@@ -1,3 +1,4 @@
+import Joi from "joi";
 import { Undefinable } from "../../../domain/valueObjects/Undefinable";
 
 export class findByNameAndFromDateBookingCommand {
@@ -8,11 +9,20 @@ export class findByNameAndFromDateBookingCommand {
       name: Undefinable<any>,
       date: Undefinable<any>
     ) {
-        if (!name || !date) throw new Error("name and date are required");
-        if (typeof name !== "string" || typeof date !== "string") throw new Error("name or date format errro");
 
-        this.name = name;
-        this.date = new Date(date);
+      const validNameAndDate = Joi.object({
+        name : Joi.string().min(3).max(50).alphanum().required(),
+        date : Joi.string().alphanum().required(),        
+      })
+
+      const error = validNameAndDate.validate({
+        name : name,
+        date : date,
+      }).error;
+      if (error) throw new Error(error.message);
+
+      this.name = name;
+      this.date = new Date(date);
     }
   
     getName(): string {
