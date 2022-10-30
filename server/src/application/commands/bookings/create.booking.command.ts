@@ -14,33 +14,52 @@ export class CreateBookingCommand {
         from: string,
         to: string
     ) {
+        const fromArray = from.trim().split("-").map((item) => {
+            return Number(item)
+        });
+        const toArray = to.trim().split("-").map((item) => {
+            return Number(item)
+        });
+        const nowYear = new Date(Date.now()).getFullYear()
+
         const validObject = Joi.object({
             owner: Joi.string().uuid().required(),
             passengers: Joi.array().items(Joi.valid(owner).required(), Joi.string().uuid()).required(),
             accommodation: Joi.string().uuid().required(),
-            from: Joi.string().required(),
-            to: Joi.string().required()
+            from: Joi.array().items(
+                Joi.number().min(nowYear).required(),
+                Joi.number().min(1).max(12).required(),
+                Joi.number().min(1).max(31).required()
+            ).max(3).required(),
+            to: Joi.array().items(
+                Joi.number().min(nowYear).required(),
+                Joi.number().min(1).max(12).required(),
+                Joi.number().min(1).max(31).required()
+            ).max(3).required(),
         });
 
-        const error = validObject.validate({
+        const { error, value } = validObject.validate({
             owner: owner,
             passengers: passengers,
             accommodation: accommodation,
-            from: from,
-            to: to
-        }).error;
+            from: fromArray,
+            to: toArray
+        });
         if (error) throw new Error(error.message);
 
-        const dateDifference = (new Date(to).getTime() - new Date(from).getTime()) / (1000 * 3600 * 24);
-        if (dateDifference >= 1) {
+        const fromDate = new Date(value.from[0],value.from[1],value.from[2]);
+        const toDate = new Date(value.to[0],value.to[1],value.to[2]);
+
+        const dateDifference = (toDate.getTime() - fromDate.getTime()) / (1000 * 3600 * 24);
+        if (dateDifference <= 0 ) {
             throw new Error("Invalid date range");
         };
 
-        this.owner = owner;
-        this.passengers = passengers;
-        this.accommodation = accommodation;
-        this.from = new Date(from);
-        this.to = new Date(to);
+        this.owner = value.owner;
+        this.passengers = value.passengers;
+        this.accommodation = value.accommodation;
+        this.from = fromDate
+        this.to = toDate;
     }
 
     getOwner(): string {
