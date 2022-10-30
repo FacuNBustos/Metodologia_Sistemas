@@ -30,17 +30,7 @@ export class Booking {
         this.status = status;
     };
 
-    public static create(owner: Passenger, passengers: Passenger[], accommodation: Accommodation, from: Date, to: Date) {
-
-        if (!passengers.includes(owner)) {
-            throw new Error("the owner is not included in the passengers");
-        };
-
-        const differenceDate = ( to.getTime() - from.getTime() ) / ( 1000 * 3600 * 24 );
-        if ( differenceDate >= 1 ) {
-            throw new Error("invalid dates range");
-        };
-        
+    public static create(owner: Passenger, passengers: Passenger[], accommodation: Accommodation, from: Date, to: Date) { 
         const id = v4();
         const status = BOOKING_STATES.PENDING;
 
