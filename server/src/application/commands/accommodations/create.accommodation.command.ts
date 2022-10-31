@@ -1,4 +1,4 @@
-import Joi, { valid } from "joi";
+import Joi from "joi";
 
 class CreateAccommodationCommand {
   private readonly name: string;
