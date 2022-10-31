@@ -8,7 +8,7 @@ class CreatePassengerCommand {
   constructor(fullName: string, email: string, identityCard: string) {
 
     const validObject = Joi.object({
-      fullName: Joi.string().min(3).max(50).alphanum().required(),
+      fullName: Joi.string().min(3).max(50).required(),
       email: Joi.string().email().required(),
       identityCard: Joi.string().max(15).required()
     });

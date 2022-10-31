@@ -1,8 +1,8 @@
 import { CreateBookingCommand } from "../../../../../src/application/commands/bookings/create.booking.command";
 
-describe("Create Booking Command", () => {
+describe("Create Booking Command tests", () => {
 
-    const sot = CreateBookingCommand;
+    const sut = CreateBookingCommand;
 
     const commonValues = {
         owner: "75e2a6a3-be27-4c31-b3a8-f821da33601c",
@@ -13,7 +13,7 @@ describe("Create Booking Command", () => {
     };
 
     it("Correct Creation of command", () => {
-        const command = new sot(
+        const command = new sut(
             commonValues.owner,
             commonValues.passengers,
             commonValues.accommodation,
@@ -40,7 +40,7 @@ describe("Create Booking Command", () => {
     it("Create command with a blank attribute", () => {
 
         expect(() => { 
-            new sot(
+            new sut(
                 commonValues.owner,
                 [],
                 commonValues.accommodation,
@@ -50,7 +50,7 @@ describe("Create Booking Command", () => {
         }).toThrow(Error)
 
         expect(() => { 
-            new sot(
+            new sut(
                 commonValues.owner,
                 commonValues.passengers,
                 "",
@@ -60,7 +60,7 @@ describe("Create Booking Command", () => {
         }).toThrow(Error)
 
         expect(() => { 
-            new sot(
+            new sut(
                 commonValues.owner,
                 commonValues.passengers,
                 commonValues.accommodation,
@@ -70,7 +70,7 @@ describe("Create Booking Command", () => {
         }).toThrow(Error)
 
         expect(() => { 
-            new sot(
+            new sut(
                 commonValues.owner,
                 commonValues.passengers,
                 commonValues.accommodation,
@@ -82,7 +82,7 @@ describe("Create Booking Command", () => {
 
     it("Create command with owner outside passengers", () => {
         expect(() => { 
-            new sot(
+            new sut(
                 commonValues.owner,
                 ["f0ced856-acda-4ad8-8344-4b2330cbed7c", "cf4182a7-75e4-4c4b-9520-7e3e96de48bc"],
                 commonValues.accommodation,
@@ -97,7 +97,7 @@ describe("Create Booking Command", () => {
         const ownerValues = ["75e2a6a3-be27-4c31-b3a8-f821da33601", "thisAValue", "123761287361237123", "   75e2a6a3-be27-4c31-b3a8-f821da33601c   ", "          "]
         ownerValues.forEach((owner) => {
             expect(() => {
-                new sot(
+                new sut(
                     owner,
                     commonValues.passengers,
                     commonValues.accommodation,
@@ -110,7 +110,7 @@ describe("Create Booking Command", () => {
         const passengersValues = ["75e2a6a3-be27-4c31-b3a8-f821da33601", "thisAValue", "123761287361237123", "   75e2a6a3-be27-4c31-b3a8-f821da33601c   ", "      "]
         passengersValues.forEach((passengers) => {
             expect(() => {
-                new sot(
+                new sut(
                     commonValues.owner,
                     [commonValues.owner, passengers],
                     commonValues.accommodation,
@@ -123,7 +123,7 @@ describe("Create Booking Command", () => {
         const accommodationValues = ["75e2a6a3-be27-4c31-b3a8-f821da33601", "thisAValue", "123761287361237123", "   75e2a6a3-be27-4c31-b3a8-f821da33601c   ", "     "]
         accommodationValues.forEach((accommodation) => {
             expect(() => {
-                new sot(
+                new sut(
                     commonValues.owner,
                     commonValues.passengers,
                     accommodation,
@@ -136,7 +136,7 @@ describe("Create Booking Command", () => {
         const fromValues = ["2022/7/30", "2020-7-30", "7-30", "2022-30", "2022-7", "   ", "yyyy-mm-dd", "2022-9-30"]
         fromValues.forEach((from) => {
             expect(() => {
-                new sot(
+                new sut(
                     commonValues.owner,
                     commonValues.passengers,
                     commonValues.accommodation,
@@ -149,7 +149,7 @@ describe("Create Booking Command", () => {
         const toValues = ["2022/7/30", "2020-7-30", "7-30", "2022-30", "2022-7", "   ", "yyyy-mm-dd"]
         toValues.forEach((to) => {
             expect(() => {
-                new sot(
+                new sut(
                     commonValues.owner,
                     commonValues.passengers,
                     commonValues.accommodation,
@@ -165,7 +165,7 @@ describe("Create Booking Command", () => {
         const datesValues = [["2022-7-30","2022-7-30"], ["2022-07-30","2022-07-29"]]
         datesValues.forEach((dates) => {
             expect(()=> {
-                new sot(
+                new sut(
                     commonValues.owner,
                     commonValues.passengers,
                     commonValues.accommodation,
