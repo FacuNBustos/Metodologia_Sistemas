@@ -6,6 +6,10 @@ export default new class findByIdentityCardPassengerHandler {
   async execute(command: findByIdentityCardPassengerCommand) {
     const passenger = await passengerRepository.findOneByIdentityCard(command);
 
+    if (!passenger) {
+      throw new Error('Passenger not found');
+    }
+
     return passenger;
   }
 }
