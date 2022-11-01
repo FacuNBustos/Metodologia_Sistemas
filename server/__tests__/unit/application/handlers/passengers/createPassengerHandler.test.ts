@@ -16,4 +16,5 @@ describe("Create Passenger Handler test", () => {
         sut.execute(CreatePassengerCommandMock);
         expect(passengerRepository.save).toHaveBeenCalledWith(PassengerMock);
     });
+
 })
