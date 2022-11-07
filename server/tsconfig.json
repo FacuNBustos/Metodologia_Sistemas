@@ -22,9 +22,8 @@
   },
   "include": [
     "src/**/**/*.ts",
-    "tests/**/*.ts",
-    "configs/**/*.json"
+    "__tests__/**/*.ts",
   ],
   "exclude": [
-    "../node_modules", "src/Apps/Ingestion/Frontend/*"]
+    "../node_modules"]
 }
