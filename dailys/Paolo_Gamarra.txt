@@ -65,3 +65,6 @@ Accommodation Repository
 
 12/10/2022
 Hoy hice unas correcciones en tsconfig.json y accommodation.repository. Tuve que crear un comando nuevo server/src/infraestructure/repositories/accommodation.repository.ts porque en el repositorio me saltaban errores. Me queda esperar que Rubén haga el comando findOneByNameAccommodationcommand
+
+06/11/2022 SPRINT 3
+Me toca el test th-002 (Test unitario Command create passenger). Crear el unit test del happy path y un caso excepcional para el caso de uso de crear passengers. Voy a hacer uno que se introduzca vacío en fullname, un mail sin formato de email y un identityCard mayor a 15 caracteres
