@@ -6,7 +6,7 @@ class CreateAccommodationCommand {
 
   constructor(name: string, pricePerNight: number) {
     const validObject = Joi.object({ 
-      name: Joi.string().alphanum().min(3).max(50).required(),
+      name: Joi.string().min(3).max(50).required(),
       pricePerNight: Joi.number().min(0).required()
     });
 
