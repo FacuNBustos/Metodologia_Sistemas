@@ -2,6 +2,8 @@ import createPassengerHandler from "../../../../../src/application/handlers/pass
 import passengerRepository from "../../../../../src/infraestructure/repositories/passenger.repository";
 import CreatePassengerCommandMock from "../../../../../src/infraestructure/mocks/application/commands/passengers/createPassengerCommand.mock";
 import PassengerMock from "../../../../../src/infraestructure/mocks/domain/entities/Passenger.mock";
+import PassengerPaoloMock from "../../../../../src/infraestructure/mocks/domain/entities/PassengerPaolo.mock";
+import CreatePassengerCommand from "../../../../../src/application/commands/passengers/create.passenger.command";
 
 jest.mock("../../../../../src/infraestructure/repositories/passenger.repository");
 jest.mock('uuid', () => ({
@@ -16,5 +18,4 @@ describe("Create Passenger Handler test", () => {
         sut.execute(CreatePassengerCommandMock);
         expect(passengerRepository.save).toHaveBeenCalledWith(PassengerMock);
     });
-
 })
