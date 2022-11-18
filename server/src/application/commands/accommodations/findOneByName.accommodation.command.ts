@@ -8,7 +8,7 @@ export class findOneByNameAccommodationCommand {
     ) {
 
       const validName = Joi.object({
-        name: Joi.string().min(3).alphanum().required()
+        name: Joi.string().min(3).required()
       })
 
       const error = validName.validate({

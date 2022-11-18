@@ -32,7 +32,7 @@ class AccommodationRepository {
   
   async findOneByName(command: findOneByNameAccommodationCommand): Promise<Accommodation | null> {
     const accommodation = this.accommodations.find(function(a) {
-      return a.getName() === command.getName();
+      return a.getName().includes(command.getName());
     });
     
     return (accommodation) ? accommodation : null;

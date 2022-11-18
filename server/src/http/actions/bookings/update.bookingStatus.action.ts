@@ -7,6 +7,7 @@ class UpdateBookingStatusAction {
 
     try {
       const command = new UpdateBookingStatusCommand(
+        req.params.id,
         req.body.status
       );
 

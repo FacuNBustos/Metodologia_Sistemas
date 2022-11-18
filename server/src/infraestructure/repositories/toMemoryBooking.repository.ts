@@ -35,7 +35,7 @@ class toMemoryBookingRepository {
             const nameOwner = b.getOwner().getFullName();
             const fromBooking = b.getFrom();
 
-            return nameOwner.startsWith(command.getName()) && fromBooking === command.getDate();
+            return (nameOwner.startsWith(command.getName()) && fromBooking.getTime() == command.getDate().getTime());
         });
         
         return (booking)? booking : null;

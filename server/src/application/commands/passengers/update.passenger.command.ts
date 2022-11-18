@@ -16,7 +16,7 @@ export class UpdatePassengerCommand {
     ) {
         const validObject = Joi.object({
             id: Joi.string().uuid().required(),
-            fullName: Joi.string().min(3).max(50).alphanum().required(),
+            fullName: Joi.string().min(3).max(50).required(),
             email: Joi.string().email().required(),
             identityCard: Joi.string().max(15).required()
         })

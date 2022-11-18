@@ -12,7 +12,7 @@ export class UpdateAccommodationCommand {
     ) {
         const validObject = Joi.object({
             id: Joi.string().uuid().required(),
-            name: Joi.string().alphanum().min(3).max(50).required(),
+            name: Joi.string().min(3).max(50).required(),
             pricePerNight: Joi.number().min(0).required()
         })
         

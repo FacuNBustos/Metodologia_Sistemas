@@ -1,15 +1,20 @@
 import { UpdateBookingStatusCommand } from '../../commands/bookings/update.bookingStatus.command';
 import { Booking } from '../../../domain/entities/booking.entity';
 import bookingRepository from '../../../infraestructure/repositories/toMemoryBooking.repository';
+import { findByIdBookingCommand } from '../../commands/bookings/findById.booking.command';
 
 class UpdateBookingStatusHandler {
   async execute(command: UpdateBookingStatusCommand) {
-    const booking = Booking.fromPrimitives({
+    const commandFindById = new findByIdBookingCommand(command.getId());
 
-      status: command.getStatus()
-    });
+    const bookingSaved = await bookingRepository.findOneById(commandFindById);
 
-    await bookingRepository.save(booking);
+    if(!bookingSaved) {
+      throw new Error("booking not exist")
+    };
+    bookingSaved.changeStatus(command.getStatus());
+
+    await bookingRepository.save(bookingSaved);
   }
 }
 
